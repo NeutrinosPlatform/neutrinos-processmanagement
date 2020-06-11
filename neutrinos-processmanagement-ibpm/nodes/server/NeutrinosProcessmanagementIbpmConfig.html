@@ -1,0 +1,63 @@
+<script type='text/x-red' data-template-name='NeutrinosProcessmanagementIbpmConfig'></script>
+<script type='text/javascript'>
+	registerNode({
+		
+		nodeType: 'NeutrinosProcessmanagementIbpmConfig',
+		serviceType: 'server',
+		nodeDef: {
+			color: '#9d8221',
+			category: 'config',
+			defaults: {
+				name: {
+					value: 'IBPM Config',
+					attrDef: { attrType: 'INPUT', options: { placeholder: 'Name' } }
+				},
+				UserID : {
+					value: '',
+					attrDef: {
+						attrType: 'TYPED_INPUT', label: 'UserID', options: {
+							types: [
+								{ value: 'str', label: 'string', nullable: true, nullableValue: 'undefined', validate: server.validators.typedInput('str', true) },
+								'server_env'
+							]
+						}
+					}
+				},
+				Password : {
+					value: '',
+					attrDef: {
+						attrType: 'TYPED_INPUT', label: 'Password', options: {
+							types: [
+								{ value: 'str', label: 'string', nullable: true, nullableValue: 'undefined', validate: server.validators.typedInput('str', true) },
+								'server_env'
+							]
+						}
+					}
+				},
+				Owner: {
+					value: '',
+					attrDef: {
+						attrType: 'TYPED_INPUT', label: 'Owner', options: {
+							types: [
+								"str",
+								{ value: 'server_env', label: 'env', nullable: true, nullableValue: 'undefined', validate: server.validators.typedInput('env', false) }
+							]
+						}
+					}
+				},
+				Https: {
+                  value: false,
+                  attrDef: {attrType: 'TOGGLE_BUTTON', options: {label: 'Https'}}
+			  },
+				
+			},
+			inputs: 1,
+			outputs: 1,
+			label: function () {
+				return this.name || 'IBPM Config';
+			}
+		}		
+	});
+
+</script>
+

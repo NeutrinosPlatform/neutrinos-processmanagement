@@ -1,0 +1,62 @@
+<script type='text/x-red' data-template-name='NeutrinosProcessmanagementIbpmTaskUrl'></script>
+<script type='text/javascript'>
+	registerNode({
+		nodeType: 'NeutrinosProcessmanagementIbpmTaskUrl',
+		serviceType: 'server',
+		nodeDef: {
+			color: '#455A64',
+			category: 'IBPM',
+			defaults: {
+				name: {
+					value: 'Task URL',
+				},
+				IBPMConfig: {
+					type: 'NeutrinosProcessmanagementIbpmConfig', value: '', required: true,
+					attrDef: { label: 'IBPM Config' }
+				},
+				'Content-type': {
+					value: 'application/json',
+					attrDef: {
+						attrType: 'SELECT', label: 'Content-type', options: {
+							optionsData: [{value: 'application/json', displayValue: 'JSON', description: "Select this if the server sends json data"},
+							{value: 'application/xml', displayValue: 'xml', description: "Select this if the server sends json data"}]	
+						}
+					}
+				},
+				URL: {
+					value: '',
+					attrDef: {
+						attrType: 'TYPED_INPUT', label: 'URL', options: {
+							types: [
+								"str",
+								{ value: 'bh.input', label: 'bh.input.', nullable: true, nullableValue: '', validate: server.validators.typedInput('bh.input') },
+								{ value: 'bh.local', label: 'bh.local.', nullable: true, nullableValue: '', validate: server.validators.typedInput('bh.local') }
+							]
+						}
+					} 
+                },
+                taskID: {
+					value: '',
+					attrDef: {
+						attrType: 'TYPED_INPUT', label: 'taskID', options: {
+							types: [
+								"str",
+								{ value: 'bh.input', label: 'bh.input.', nullable: true, nullableValue: '', validate: server.validators.typedInput('bh.input') },
+								{ value: 'bh.local', label: 'bh.local.', nullable: true, nullableValue: '', validate: server.validators.typedInput('bh.local') }
+							]
+						}
+					}
+				}		  
+			},
+			inputs: 1,
+			outputs: 1,
+			icon: 'neutrinos-processmanagement-ibpm/ibpm-task-url.svg',
+			paletteLabel: function (def) {
+				return 'Task URL';
+			},
+			label: function () {
+				return this.name || 'Task URL';
+			},
+		}
+	});
+</script>

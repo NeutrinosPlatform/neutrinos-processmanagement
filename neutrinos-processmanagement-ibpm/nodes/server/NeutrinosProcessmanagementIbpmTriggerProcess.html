@@ -1,0 +1,139 @@
+<script type='text/x-red' data-template-name='NeutrinosProcessmanagementIbpmTriggerProcess'></script>
+<script type='text/javascript'>
+	registerNode({
+		nodeType: 'NeutrinosProcessmanagementIbpmTriggerProcess',
+		serviceType: 'server',
+		nodeDef: {
+			color: '#455A64',
+			category: 'IBPM',
+			defaults: {
+				name: {
+					value: 'Trigger Process',
+				},
+				IBPMConfig: {
+					type: 'NeutrinosProcessmanagementIbpmConfig', value: '', required: true,
+					attrDef: { label: 'IBPM Config' }
+				},
+				'Content-type': {
+					value: 'application/json',
+					attrDef: {
+						attrType: 'SELECT', label: 'Content-type', options: {
+							optionsData: [{value: 'application/json', displayValue: 'JSON', description: "Select this if the server sends json data"},
+							{value: 'application/xml', displayValue: 'xml', description: "Select this if the server sends json data"}]	
+						}
+					}
+				},
+				URL: {
+					value: '',
+					attrDef: {
+						attrType: 'TYPED_INPUT', label: 'URL', options: {
+							types: [
+								"str",
+								{ value: 'bh.input', label: 'bh.input.', nullable: true, nullableValue: '', validate: server.validators.typedInput('bh.input') },
+								{ value: 'bh.local', label: 'bh.local.', nullable: true, nullableValue: '', validate: server.validators.typedInput('bh.local') }
+							]
+						}
+					}
+				},
+				'action': {
+					value: 'Start',
+					attrDef: {
+						attrType: 'SELECT', label: 'Start', options: {
+							optionsData: [{value: 'text/plain', displayValue: 'Start', description: "Select this if the server sends json data"}]	
+						}
+					}
+				}, 
+				header: {
+                  value: false,
+                  attrDef: {attrType: 'TOGGLE_BUTTON', options: {label: 'header'}}
+			  },
+			  bpdId: {
+					value: '',
+					attrDef: {
+						attrType: 'TYPED_INPUT', label: 'bpdId', options: {
+							types: [
+								"str",
+								{ value: 'bh.input', label: 'bh.input.', nullable: true, nullableValue: '', validate: server.validators.typedInput('bh.input') },
+								{ value: 'bh.local', label: 'bh.local.', nullable: true, nullableValue: '', validate: server.validators.typedInput('bh.local') }
+							]
+						}
+					}
+				},
+				branchId: {
+					value: '',
+					attrDef: {
+						attrType: 'TYPED_INPUT', label: 'branchId', options: {
+							types: [
+								"str",
+								{ value: 'bh.input', label: 'bh.input.', nullable: true, nullableValue: '', validate: server.validators.typedInput('bh.input') },
+								{ value: 'bh.local', label: 'bh.local.', nullable: true, nullableValue: '', validate: server.validators.typedInput('bh.local') }
+							]
+						}
+					}
+				},
+				processAppId: {
+					value: '',
+					attrDef: {
+						attrType: 'TYPED_INPUT', label: 'processAppId', options: {
+							types: [
+								"str",
+								{ value: 'bh.input', label: 'bh.input.', nullable: true, nullableValue: '', validate: server.validators.typedInput('bh.input') },
+								{ value: 'bh.local', label: 'bh.local.', nullable: true, nullableValue: '', validate: server.validators.typedInput('bh.local') }
+							]
+						}
+					}
+				},
+				summary: {
+                  value: false,
+                  attrDef: {attrType: 'TOGGLE_BUTTON', options: {label: 'summary'}}
+			  },
+			  data: {
+                  value: false,
+                  attrDef: {attrType: 'TOGGLE_BUTTON', options: {label: 'data'}}
+			  },
+			  dataModel: {
+                  value: false,
+                  attrDef: {attrType: 'TOGGLE_BUTTON', options: {label: 'dataModel'}}
+			  },
+			  diagram: {
+                  value: false,
+                  attrDef: {attrType: 'TOGGLE_BUTTON', options: {label: 'diagram'}}
+			  },
+			  executionTree: {
+                  value: false,
+                  attrDef: {attrType: 'TOGGLE_BUTTON', options: {label: 'executionTree'}}
+			  },
+			  actions: {
+                  value: false,
+                  attrDef: {attrType: 'TOGGLE_BUTTON', options: {label: 'actions'}}
+			  },
+			  relationShips: {
+                  value: false,
+                  attrDef: {attrType: 'TOGGLE_BUTTON', options: {label: 'relationShips'}}
+			  },
+			  all: {
+                  value: false,
+                  attrDef: {attrType: 'TOGGLE_BUTTON', options: {label: 'all'}}
+			  },
+			  executedDocs: {
+                  value: false,
+                  attrDef: {attrType: 'TOGGLE_BUTTON', options: {label: 'executedDocs'}}
+			  },
+			  none: {
+                  value: false,
+                  attrDef: {attrType: 'TOGGLE_BUTTON', options: {label: 'none'}}
+			  },
+			},
+			inputs: 1,
+			outputs: 1,
+			icon: 'neutrinos-processmanagement-ibpm/process.svg',
+			paletteLabel: function (def) {
+				return 'trigger process';
+			},
+			label: function () {
+				return this.name || 'trigger process';
+			},
+			//docsLink: 'get-call-node'
+		}
+	});
+</script>

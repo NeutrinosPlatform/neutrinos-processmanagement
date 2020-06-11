@@ -1,0 +1,82 @@
+<script type='text/x-red' data-template-name='NeutrinosProcessmanagementIbpmCheckOut'></script>
+<script type='text/javascript'>
+	registerNode({
+		nodeType: 'NeutrinosProcessmanagementIbpmCheckOut',
+		serviceType: 'server',
+		nodeDef: {
+			color: '#455A64',
+			category: 'IBPM',
+			defaults: {
+				name: {
+					value: 'Check Out',
+				},
+				IBPMConfig: {
+					type: 'NeutrinosProcessmanagementIbpmConfig', value: '', required: true,
+					attrDef: { label: 'IBPM Config' }
+				},
+				'Content-type': {
+					value: 'application/json',
+					attrDef: {
+						attrType: 'SELECT', label: 'Content-type', options: {
+							optionsData: [{value: 'application/json', displayValue: 'JSON', description: "Select this if the server sends json data"},
+							{value: 'application/xml', displayValue: 'xml', description: "Select this if the server sends json data"}]	
+						}
+					}
+				},
+				URL: {
+					value: '',
+					attrDef: {
+						attrType: 'TYPED_INPUT', label: 'URL', options: {
+							types: [
+								"str",
+								{ value: 'bh.input', label: 'bh.input.', nullable: true, nullableValue: '', validate: server.validators.typedInput('bh.input') },
+								{ value: 'bh.local', label: 'bh.local.', nullable: true, nullableValue: '', validate: server.validators.typedInput('bh.local') }
+							]
+						}
+					} 
+				},
+				Claim: {
+                  value: false,
+                  attrDef: {attrType: 'TOGGLE_BUTTON', options: {label: 'Save'}}
+			  },
+			  Start: {
+                  value: false,
+                  attrDef: {attrType: 'TOGGLE_BUTTON', options: {label: 'Complete'}}
+			  },
+			  Container: {
+					value: '',
+					attrDef: {
+						attrType: 'TYPED_INPUT', label: 'Container', options: {
+							types: [
+								"str",
+								{ value: 'bh.input', label: 'bh.input.', nullable: true, nullableValue: '', validate: server.validators.typedInput('bh.input') },
+								{ value: 'bh.local', label: 'bh.local.', nullable: true, nullableValue: '', validate: server.validators.typedInput('bh.local') }
+							]
+						}
+					}
+				},
+				TaskID: {
+					value: '',
+					attrDef: {
+						attrType: 'TYPED_INPUT', label: 'Task ID', options: {
+							types: [
+								"str",
+								{ value: 'bh.input', label: 'bh.input.', nullable: true, nullableValue: '', validate: server.validators.typedInput('bh.input') },
+								{ value: 'bh.local', label: 'bh.local.', nullable: true, nullableValue: '', validate: server.validators.typedInput('bh.local') }
+							]
+						}
+					}
+				},
+			},
+			inputs: 1,
+			outputs: 1,
+			icon: 'neutrinos-processmanagement-ibpm/ibpm-check-out.svg',
+			paletteLabel: function (def) {
+				return 'Check Out';
+			},
+			label: function () {
+				return this.name || 'Check Out';
+			},
+		}
+	});
+</script>
