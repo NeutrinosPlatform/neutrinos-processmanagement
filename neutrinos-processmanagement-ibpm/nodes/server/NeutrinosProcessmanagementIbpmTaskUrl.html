@@ -46,7 +46,19 @@
 							]
 						}
 					}
-				}		  
+				},
+				ResultMapping: {
+					value: '',
+					attrDef: {
+						attrType: 'TYPED_INPUT', label: 'Result Mapping', options: {
+							types: [
+								"str",
+								{ value: 'bh.input', label: 'bh.input.', nullable: true, nullableValue: '', validate: server.validators.typedInput('bh.input') },
+								{ value: 'bh.local', label: 'bh.local.', nullable: true, nullableValue: '', validate: server.validators.typedInput('bh.local') }
+							]
+						}
+					}
+				},		  
 			},
 			inputs: 1,
 			outputs: 1,
